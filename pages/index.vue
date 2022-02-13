@@ -1,6 +1,9 @@
 <template>
   <NuxtLayout name="custom">
     <div class="flex flex-col px-4 h-full overflow-y-auto">
+          
+          {{$ua}}
+
       <div
         class="flex-none flex flex-row my-2 border border-gray-200 rounded overflow-hidden"
         v-for="user in data"
@@ -44,6 +47,8 @@ export default defineComponent({
     const { data } = await useAsyncData("users", () =>
       $fetch("https://api.github.com/users")
     );
+
+    console.table(process)
 
     return { data };
   },
